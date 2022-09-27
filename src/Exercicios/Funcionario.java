@@ -8,6 +8,13 @@ public class Funcionario {
     Long cpf;
     String nomeCompleto;
     Float salario;
+    public Funcionario(String NomeCompleto){
+        nomeCompleto=NomeCompleto;
+    }
+    public Funcionario( String NomeCompleto, Long CPF){
+        cpf=CPF;
+        nomeCompleto=NomeCompleto;
+    }
     public Funcionario(Float Salario, String NomeCompleto, Long CPF){
         cpf=CPF;
         nomeCompleto=NomeCompleto;
