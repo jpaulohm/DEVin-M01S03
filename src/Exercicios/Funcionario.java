@@ -8,6 +8,9 @@ public class Funcionario {
     Long cpf;
     String nomeCompleto;
     Float salario;
+    public String getNomeCompleto(){
+        return this.nomeCompleto;
+    }
     public Funcionario(String NomeCompleto){
         nomeCompleto=NomeCompleto;
     }

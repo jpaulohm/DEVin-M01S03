@@ -1,3 +1,4 @@
+import Exercicios.Contador;
 import Exercicios.Funcionario;
 
 public class Main {
@@ -15,5 +16,7 @@ public class Main {
         joao.Aumentar(15F+20F);
         System.out.println(joao);
 
+
+        System.out.println("Numero de plavras no nome do joao: " + Contador.contaPalavras(joao.getNomeCompleto()));
     }
 }
