@@ -13,7 +13,7 @@ public class Main {
         joao.Aumentar(15F);
         System.out.println(joao);
 
-        joao.Aumentar(15F+20F);
+        joao.Aumentar(15F,20F);
         System.out.println(joao);
 
 
