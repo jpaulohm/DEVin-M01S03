@@ -1,4 +1,4 @@
-package Exercicios;
+package Exercicios.Contador;
 
 public class Contador {
     public static Integer contaPalavras(String frase){

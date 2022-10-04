@@ -1,4 +1,4 @@
-package Exercicios;
+package Exercicios.Contador;
 
 public class TestarContador2 {
     public static void main(String[] args) {

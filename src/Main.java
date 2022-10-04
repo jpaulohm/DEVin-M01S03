@@ -1,5 +1,5 @@
-import Exercicios.Contador;
-import Exercicios.Funcionario;
+import Exercicios.Contador.Contador;
+import Exercicios.Contador.Funcionario;
 
 public class Main {
     public static void main(String[] args) {

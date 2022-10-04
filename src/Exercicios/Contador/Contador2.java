@@ -1,4 +1,4 @@
-package Exercicios;
+package Exercicios.Contador;
 
 public class Contador2 {
     String frase;
