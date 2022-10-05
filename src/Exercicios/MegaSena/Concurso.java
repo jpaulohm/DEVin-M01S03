@@ -10,8 +10,6 @@ public class Concurso {
     private LocalDate data;
     private Integer[] sorteados;
 
-
-
     public Concurso(String linha) {
         List<String> infosConcurso = Arrays.asList(linha.split(","));
         numero = Integer.valueOf(infosConcurso.get(0));
@@ -23,7 +21,7 @@ public class Concurso {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
 
-        data = LocalDate.parse("9/05/2019", formatter);
+        data = LocalDate.parse(infosConcurso.get(1), formatter);
     }
 
 
