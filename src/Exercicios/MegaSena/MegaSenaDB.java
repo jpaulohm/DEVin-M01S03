@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class MegaSenaDB {
 
         for (int i = 0; i < todosConcursos.size(); i++) {
             if(data.equals( todosConcursos.get(i).getData())){
+                System.out.println("Nessa data houve sorteio:");
                 System.out.println(todosConcursos.get(i));
                 return;
             }
@@ -50,7 +52,7 @@ public class MegaSenaDB {
     public Integer NumeroDeConcursos(){
         return todosConcursos.size();
     }
-    public void Ordenar(){
+    public void OrdenarPorId(){
         todosConcursos.sort(new Comparator<Concurso>() {
             @Override
             public int compare(Concurso o1, Concurso o2) {
@@ -63,4 +65,23 @@ public class MegaSenaDB {
             }
         });
     }
+
+    public void OrdenarNumerosSorteados(){
+        for (int i = 0; i < todosConcursos.size(); i++) {
+            todosConcursos.get(i).OrdenarNumerosSorteados();
+        }
+    }
+    public void ProcurarSeJaFOiSorteado(Integer[] meusNumeros){
+        Arrays.sort(meusNumeros);
+        for (int i = 0; i < todosConcursos.size(); i++) {
+            if (Arrays.equals(todosConcursos.get(i).getSorteados(), meusNumeros)){
+                System.out.println("Numeros ja foram sorteados:\n" + todosConcursos.get(i));
+                return;
+            }
+        }
+        System.out.println("Numeros nunca sorteados");
+        return;
+    }
+
+
 }

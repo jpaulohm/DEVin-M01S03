@@ -1,5 +1,7 @@
 package Exercicios.MegaSena;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -10,7 +12,7 @@ public class Concurso {
     private LocalDate data;
     private Integer[] sorteados;
 
-    public Concurso(String linha) {
+    public Concurso(@NotNull String linha) {
         List<String> infosConcurso = Arrays.asList(linha.split(","));
         numero = Integer.valueOf(infosConcurso.get(0));
         sorteados = new Integer[6];
@@ -24,7 +26,9 @@ public class Concurso {
         data = LocalDate.parse(infosConcurso.get(1), formatter);
     }
 
-
+    public void OrdenarNumerosSorteados(){
+        Arrays.sort(sorteados);
+    }
 
     @Override
     public String toString() {
