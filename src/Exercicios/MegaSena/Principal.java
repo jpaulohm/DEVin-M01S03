@@ -31,5 +31,11 @@ public class Principal {
         todasMegaSenas.OrdenarNumerosSorteados();
         Integer[] teste = {4,5,30,33,41,52};
         todasMegaSenas.ProcurarSeJaFOiSorteado(teste);
+
+        //EX 10
+        todasMegaSenas.PreencheMapa();
+
+        todasMegaSenas.MaisSorteado();
+        todasMegaSenas.MenosSorteado();
     }
 }
