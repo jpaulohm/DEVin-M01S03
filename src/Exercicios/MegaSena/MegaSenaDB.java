@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -14,17 +15,25 @@ public class MegaSenaDB {
     Path arquivo;
     List<Concurso> todosConcursos;
     HashMap<Integer,Integer> mapaNumerosRepeticoes = new HashMap<>();
+    HashMap<Integer,LocalDate> mapaUltimoSorteio = new HashMap<>();
 
     public void PreencheMapa(){
+        LocalDate dataAux = LocalDate.of(1,01,01);
         for (int i = 1; i < 61; i++) {
             mapaNumerosRepeticoes.put(i,0);
+            mapaUltimoSorteio.put(i,dataAux);
         }
         for (int i = 0; i < todosConcursos.size(); i++) {
             for (Integer j = 0; j < 6; j++) {
                 mapaNumerosRepeticoes.replace(todosConcursos.get(i).getSorteados()[j],mapaNumerosRepeticoes.get(todosConcursos.get(i).getSorteados()[j])+1);
+                if (mapaUltimoSorteio.get(todosConcursos.get(i).getSorteados()[j]).isBefore(todosConcursos.get(i).getData())){
+                    mapaUltimoSorteio.replace(todosConcursos.get(i).getSorteados()[j],todosConcursos.get(i).getData());
+                }
             }
         }
         System.out.println(mapaNumerosRepeticoes);
+        System.out.println(mapaUltimoSorteio);
+
     }
     public Integer MaisSorteado(){
         Integer maisSorteado = 0;
@@ -64,7 +73,18 @@ public class MegaSenaDB {
         System.out.println("Não houve sorteio neste dia");
         return;
     }
+    public void ProcuraNumeroMaisAtrasado(){
+        LocalDate dataMaisAntigo = LocalDate.now();
+        Integer maisAntigo = 0;
 
+        for (int i = 1; i < mapaUltimoSorteio.size() + 1 ; i++) {
+            if (dataMaisAntigo.isAfter(mapaUltimoSorteio.get(i))) {
+                dataMaisAntigo = mapaUltimoSorteio.get(i);
+                maisAntigo = i;
+            }
+        }
+        System.out.println("Numero mais atrasado e " + maisAntigo + " e ocorreu em " + dataMaisAntigo);
+    }
     public MegaSenaDB(String nomeArquivo) {
         this.nomeArquivo = nomeArquivo;
         todosConcursos = new ArrayList<>();
